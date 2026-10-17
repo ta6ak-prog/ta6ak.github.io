@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dodge SRT — Чистая мощь американского маслкара</title>
+<style>
+:root{
+  --red:#e21b1b;
+  --red-dark:#b30f0f;
+  --bg:#0a0a0c;
+  --bg2:#121216;
+  --card:#17171c;
+  --text:#f2f2f2;
+  --muted:#9a9aa3;
+  --line:#26262e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Segoe UI',Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,10,12,.75);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-weight:800;font-size:1.4rem;letter-spacing:2px}
+.logo span{color:var(--red)}
+.nav-links{display:flex;gap:30px}
+.nav-links a{color:var(--muted);font-weight:600;font-size:.95rem;transition:color .2s;text-transform:uppercase;letter-spacing:1px}
+.nav-links a:hover{color:var(--red)}
+.burger{display:none;font-size:1.6rem;cursor:pointer}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  position:relative;
+  background:linear-gradient(rgba(10,10,12,.55),rgba(10,10,12,.9)),url('images/hero.jpeg') center/cover no-repeat;
+}
+.hero-content{max-width:720px}
+.badge{
+  display:inline-block;
+  background:var(--red);
+  color:#fff;
+  font-weight:700;
+  font-size:.8rem;
+  letter-spacing:2px;
+  padding:6px 16px;
+  border-radius:30px;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+.hero h1{
+  font-size:clamp(2.4rem,6vw,4.6rem);
+  font-weight:800;
+  line-height:1.05;
+  margin-bottom:20px;
+  text-transform:uppercase;
+}
+.hero h1 em{color:var(--red);font-style:normal}
+.hero p{font-size:1.2rem;color:var(--muted);max-width:560px;margin-bottom:34px}
+.btn{
+  display:inline-block;
+  background:var(--red);
+  color:#fff;
+  font-weight:700;
+  padding:15px 38px;
+  border-radius:6px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  transition:background .2s,transform .2s;
+}
+.btn:hover{background:var(--red-dark);transform:translateY(-2px)}
+.btn-ghost{background:transparent;border:2px solid var(--line);margin-left:14px}
+.btn-ghost:hover{border-color:var(--red);background:transparent}
+
+/* SECTION */
+section{padding:100px 0}
+.section-head{text-align:center;max-width:680px;margin:0 auto 60px}
+.section-head .kicker{color:var(--red);font-weight:700;letter-spacing:3px;text-transform:uppercase;font-size:.85rem}
+.section-head h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;margin:12px 0;text-transform:uppercase}
+.section-head p{color:var(--muted)}
+
+/* STATS */
+.stats{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat .num{font-size:clamp(2rem,5vw,3.4rem);font-weight:800;color:var(--red)}
+.stat .label{color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-size:.85rem}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-grid img{width:100%;border-radius:12px;border:1px solid var(--line)}
+.about-text h3{font-size:1.8rem;margin-bottom:18px;text-transform:uppercase}
+.about-text p{color:var(--muted);margin-bottom:16px}
+
+/* MODELS */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  transition:transform .25s,border-color .25s;
+}
+.card:hover{transform:translateY(-6px);border-color:var(--red)}
+.card-img{height:200px;background-size:cover;background-position:center}
+.card-body{padding:26px}
+.card-body h3{font-size:1.3rem;margin-bottom:8px;text-transform:uppercase}
+.card-body .power{color:var(--red);font-weight:700;margin-bottom:12px}
+.card-body p{color:var(--muted);font-size:.95rem}
+
+/* FEATURES */
+.features{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:30px}
+.feat .ico{font-size:2rem;margin-bottom:14px}
+.feat h4{font-size:1.15rem;margin-bottom:8px;text-transform:uppercase}
+.feat p{color:var(--muted);font-size:.93rem}
+
+/* CTA */
+.cta{text-align:center}
+.cta h2{font-size:clamp(2rem,5vw,3rem);font-weight:800;text-transform:uppercase;margin-bottom:18px}
+.cta p{color:var(--muted);max-width:520px;margin:0 auto 30px}
+
+/* FOOTER */
+footer{background:#060607;border-top:1px solid var(--line);padding:50px 0 30px;text-align:center}
+footer .logo{margin-bottom:14px}
+footer p{color:var(--muted);font-size:.85rem}
+footer .disc{margin-top:16px;font-size:.78rem;color:#555}
+
+@media(max-width:900px){
+  .about-grid,.cards,.feat-grid,.stats-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+  .burger{display:block}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">DODGE <span>SRT</span></div>
+      <div class="nav-links">
+        <a href="#about">О бренде</a>
+        <a href="#models">Модели</a>
+        <a href="#features">Технологии</a>
+        <a href="#cta">Контакт</a>
+      </div>
+      <div class="burger">☰</div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="badge">Street & Racing Technology</span>
+      <h1>Dodge <em>SRT</em><br>Чистая мощь</h1>
+      <p>Легендарное подразделение Dodge, которое превращает американские маслкары в настоящие снаряды. Суперчарджерные двигатели HEMI, сотни лошадиных сил и бескомпромиссный характер.</p>
+      <a href="#models" class="btn">Смотреть модели</a>
+      <a href="#about" class="btn btn-ghost">Узнать больше</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat"><div class="num">1025</div><div class="label">л.с. у Demon 170</div></div>
+      <div class="stat"><div class="num">1.66</div><div class="label">сек до 100 км/ч</div></div>
+      <div class="stat"><div class="num">6.2</div><div class="label">литра HEMI V8</div></div>
+      <div class="stat"><div class="num">1989</div><div class="label">год основания SRT</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <img src="images/engine.jpeg" alt="Двигатель Dodge SRT HEMI V8">
+      <div class="about-text">
+        <h3>Что такое SRT?</h3>
+        <p><strong>SRT</strong> (Street & Racing Technology) — это высокопроизводительное подразделение компании Dodge. Инженеры SRT берут серийные модели и превращают их в экстремальные машины для трека и драг-гонок.</p>
+        <p>Главная фишка SRT — легендарные двигатели HEMI с нагнетателем (supercharger). Именно так появились знаменитые версии Hellcat, Redeye и Demon.</p>
+        <p>SRT — это не просто шильдик, а философия: максимум мощности, агрессивный звук и эмоции от каждого нажатия на газ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="models">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Модельный ряд</div>
+      <h2>Легенды SRT</h2>
+      <p>От семейного седана до самого мощного серийного маслкара в истории.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-img" style="background-image:url('images/hero.jpeg')"></div>
+        <div class="card-body">
+          <h3>Challenger SRT Hellcat</h3>
+          <div class="power">717–807 л.с.</div>
+          <p>Культовое купе с нагнетателем. Узнаваемый свист компрессора и классический силуэт маслкара.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('images/action.jpeg')"></div>
+        <div class="card-body">
+          <h3>Charger SRT Hellcat</h3>
+          <div class="power">717–797 л.с.</div>
+          <p>Четырёхдверный седан, который считался самым быстрым серийным седаном в мире.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('images/engine.jpeg')"></div>
+        <div class="card-body">
+          <h3>Challenger SRT Demon 170</h3>
+          <div class="power">1025 л.с.</div>
+          <p>Самый мощный серийный маслкар. Разгон до 100 км/ч за 1.66 с и четверть мили менее чем за 9 секунд.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="features">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Технологии</div>
+      <h2>Что делает SRT особенным</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="ico">🔥</div><h4>Supercharged HEMI</h4><p>Нагнетатель под давлением заталкивает больше воздуха в цилиндры — отсюда сотни лошадиных сил.</p></div>
+      <div class="feat"><div class="ico">⚡</div><h4>Launch Control</h4><p>Система контроля старта для идеального разгона с места на драг-стрипе.</p></div>
+      <div class="feat"><div class="ico">🏎️</div><h4>Drag Mode</h4><p>Специальные режимы подвески и трансмиссии, заточенные под прямую.</p></div>
+      <div class="feat"><div class="ico">🔊</div><h4>Звук V8</h4><p>Глубокий рокот атмосферного V8 — визитная карточка любого Dodge SRT.</p></div>
+      <div class="feat"><div class="ico">🛠️</div><h4>Brembo тормоза</h4><p>Мощная тормозная система, чтобы справляться с огромной мощностью.</p></div>
+      <div class="feat"><div class="ico">📊</div><h4>SRT Performance Pages</h4><p>Бортовой компьютер показывает тайминги, G-перегрузки и мощность в реальном времени.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cta" class="cta">
+  <div class="container">
+    <h2>Почувствуй мощь SRT</h2>
+    <p>Dodge SRT — это часть американской автомобильной культуры. Маслкары, которые не притворяются — они просто едут быстро и громко.</p>
+    <a href="#models" class="btn">Вернуться к моделям</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo">DODGE <span>SRT</span></div>
+    <p>Информационный фан-сайт, посвящённый автомобилям Dodge SRT.</p>
+    <p class="disc">Сайт создан в ознакомительных целях. Dodge и SRT — товарные знаки их правообладателей.</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelector('.burger').addEventListener('click',function(){
+    var n=document.querySelector('.nav-links');
+    n.style.display = (n.style.display==='flex') ? 'none' : 'flex';
+    n.style.flexDirection='column';
+    n.style.position='absolute';
+    n.style.top='68px';
+    n.style.right='24px';
+    n.style.background='#121216';
+    n.style.padding='18px 26px';
+    n.style.borderRadius='10px';
+    n.style.border='1px solid #26262e';
+  });
+</script>
+
+</body>
+</html>
